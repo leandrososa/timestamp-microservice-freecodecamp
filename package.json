@@ -1,0 +1,16 @@
+{
+  "name": "timestamp-microservice-freecodecamp",
+  "version": "1.0.0",
+  "description": "Timestamp project for the API & Microservices certification",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "freecodecamp"
+  ],
+  "author": "Leandro Sosa",
+  "license": "ISC"
+}
