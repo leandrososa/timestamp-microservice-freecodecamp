@@ -4,6 +4,7 @@
   "description": "Timestamp project for the API & Microservices certification",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha"
   },
   "keywords": [
@@ -12,5 +13,8 @@
     "freecodecamp"
   ],
   "author": "Leandro Sosa",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
