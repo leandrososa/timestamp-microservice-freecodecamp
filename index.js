@@ -30,6 +30,7 @@ app.get('/api/timestamp/:date', (req, res) => {
         }
 
     } catch(err) {
+        json = '';
         json = { error : "Invalid Date" }
     }
 
