@@ -20,6 +20,8 @@ app.get('/api/timestamp/:date', (req, res) => {
     console.log(message(req.ip));
     let json;
 
+    console.log(`Ha intentado ingresar ${req.params.date}`);
+
     try{
         if(req.params.date.indexOf('-') > -1){
             let timestamp = getTimestamp(new Date(req.params.date));
@@ -48,7 +50,6 @@ function getUTCDate(timestamp){
 function message(ip){
     return `Nueva llamada desde ${ip}`;
 }
-
 
 app.listen(port, () => {
     console.log(`Aplicacion ejecutandose en http://localhost:${port}`)
