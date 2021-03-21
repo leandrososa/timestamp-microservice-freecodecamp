@@ -19,9 +19,11 @@ app.get('/api/timestamp/', (req, res) => {
 app.get('/api/timestamp/:date', (req, res) => {
     //console.log(message(req.ip));
 
+    
     let dateString = req.params.date;
     let json;
-
+    console.log("\x1b[31m", 'Solicited date: ' + dateString);
+    
     if (/\d{5,}/.test(dateString)){
         let int = parseInt(dateString);
         json = { unix: int, utc: getUTCDate(int).toUTCString() }
