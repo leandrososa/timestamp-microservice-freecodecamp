@@ -11,7 +11,7 @@ app.get('/api/timestamp/', (req, res) => {
     console.log(message(req.ip));
 
     let date = new Date();
-    json = { 'unix': getTimestamp(date), 'utc': date.toUTCString() };
+    json = { unix: getTimestamp(date), utc: date.toUTCString() };
 
     res.json(json)
 });
@@ -20,12 +20,11 @@ app.get('/api/timestamp/:date', (req, res) => {
     //console.log(message(req.ip));
 
     let dateString = req.params.date;
-
     let json;
 
     if (/\d{5,}/.test(dateString)){
         let int = parseInt(dateString);
-        json = { 'unix': int, 'utc': getUTCDate(int).toUTCString() }
+        json = { unix: int, utc: getUTCDate(int).toUTCString() }
     } else {
         let timestamp = getTimestamp(new Date(dateString));
 
@@ -34,7 +33,7 @@ app.get('/api/timestamp/:date', (req, res) => {
         if (isNaN(timestamp.toString())) {
             json = { error: "Invalid Date" };
           } else {
-            json = { 'unix': timestamp, 'utc': new Date(dateString).toUTCString() }
+            json = { unix: timestamp, utc: new Date(dateString).toUTCString() }
           }
 
         
