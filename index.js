@@ -17,12 +17,30 @@ app.get('/api/timestamp/', (req, res) => {
 });
 
 app.get('/api/timestamp/:date', (req, res) => {
-    console.log(message(req.ip));
+    //console.log(message(req.ip));
+
+    let dateString = req.params.date;
+
     let json;
 
-    console.log(`Ha intentado ingresar ${req.params.date}`);
+    if (/\d{5,}/.test(dateString)){
+        let int = parseInt(dateString);
+        json = { 'unix': int, 'utc': getUTCDate(int).toUTCString() }
+    } else {
+        let timestamp = getTimestamp(new Date(dateString));
 
-    try{
+        console.log(timestamp.toString());
+
+        if (isNaN(timestamp.toString())) {
+            json = { error: "Invalid Date" };
+          } else {
+            json = { 'unix': timestamp, 'utc': new Date(dateString).toUTCString() }
+          }
+
+        
+    }
+
+    /* try{
         if(req.params.date.indexOf('-') > -1){
             let timestamp = getTimestamp(new Date(req.params.date));
             json = { 'unix': timestamp, 'utc': new Date(req.params.date).toUTCString() }
@@ -34,7 +52,9 @@ app.get('/api/timestamp/:date', (req, res) => {
     } catch(err) {
         json = '';
         json = { error : "Invalid Date" }
-    }
+    } */
+
+
 
     res.json(json)
 });
