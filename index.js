@@ -2,6 +2,11 @@ var express = require('express');
 var app = express();
 const port = process.env.PORT || 3000;
 
+var cors = require('cors');
+app.use(cors({optionsSuccessStatus: 200}));
+
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 });
